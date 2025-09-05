@@ -15,5 +15,11 @@ public class KafkaConsumerService {
 //        System.out.println("📩 받은 메시지: " + message);
 
         log.info("📩 받은 메시지: {}", message);
+
+        // 메시지가 "error"일 경우 예외 발생
+        if ("error".equalsIgnoreCase(message)) {
+            log.error("❗❗❗ 예외 발생! 메시지: {}", message);
+            throw new RuntimeException("처리 중 예외 발생");
+        }
     }
 }
